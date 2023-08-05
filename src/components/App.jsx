@@ -1,28 +1,43 @@
-import AppCard from './Molecules/AppCard';
-import { dataDummy } from '../utils/dataDummy';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { getProducts } from '../services/Product/product';
+import { setProducts, setSearchField } from '../store/product/productReducer';
+import { selectProducts } from '../store/product/productSelector';
+
+// import AppCard from './Molecules/AppCard.jsx';
+import ProductList from './Organisms/ProductList';
+import TopNavbar from './Organisms/TopNavbar';
+import BottomNavbar from './Organisms/BottomNavbar';
+import AppSearchBar from './Molecules/AppSearchBar';
 
 function App() {
-  const products = dataDummy;
+  const dispatch = useDispatch();
+  const products = useSelector(selectProducts);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const products = await getProducts();
+      dispatch(setProducts(products));
+    };
+
+    fetchProducts();
+  }, [dispatch]);
+
+  const onSearchChange = (event) => {
+    dispatch(setSearchField(event.target.value.toLowerCase()));
+  };
 
   return (
     <>
-      <section className="px-5 md:px-20">
-        <div className="grid grid-cols-2 gap-x-5 gap-y-10 md:grid-cols-3 lg:grid-cols-4 xl:gap-x-5">
-          {products.map((product) => {
-            const { no, _id, Image, ProductDescription, BasePrice } = product;
-            return (
-              <AppCard
-                key={no}
-                id={_id}
-                image={Image}
-                alt={ProductDescription}
-                name={ProductDescription}
-                price={BasePrice}
-              />
-            );
-          })}
-        </div>
-      </section>
+      <TopNavbar />
+      <AppSearchBar
+        className="monster-searchBox"
+        placeholder="Search Monster"
+        onChangeHandler={onSearchChange}
+      />
+      <ProductList products={products} />
+      <BottomNavbar />
     </>
   );
 }

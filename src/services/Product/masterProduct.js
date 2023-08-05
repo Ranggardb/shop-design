@@ -1,10 +1,10 @@
 import requests from '../request';
 import instance from '../axios';
 
-async function getMasterProduct(start = 0, length = 25) {
+async function getMasterProducts(start = 0, length = 25) {
   try {
     const response = await instance.get(
-      `${requests.apiGetMasterProduct}?start=${start}&length=${length}`
+      `${requests.apiGetMasterProducts}?start=${start}&length=${length}`
     );
     return response.data;
   } catch (error) {
@@ -12,4 +12,4 @@ async function getMasterProduct(start = 0, length = 25) {
   }
 }
 
-export { getMasterProduct };
+export { getMasterProducts };

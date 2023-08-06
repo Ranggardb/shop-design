@@ -14,7 +14,7 @@ export const productReducer = createSlice({
     setProducts: (state, action) => {
       state.products = action.payload;
     },
-    setIsLoading: (state, action) => {
+    setIsProductLoading: (state, action) => {
       state.isLoading = action.payload;
     },
     setSearchField: (state, action) => {
@@ -28,7 +28,7 @@ export const productReducer = createSlice({
 
 export const {
   setProducts,
-  setIsLoading,
+  setIsProductLoading,
   setSearchField,
   setFilteredProducts,
 } = productReducer.actions;

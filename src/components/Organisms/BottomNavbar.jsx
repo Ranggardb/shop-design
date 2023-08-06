@@ -39,7 +39,7 @@ function BottomNavbar() {
     console.log(url);
   };
   return (
-    <section className="fixed bottom-0 p-2 bg-white shadow-[0_0_20px_-10px] shadow-slate-600  w-full">
+    <section className="fixed container mx-auto bg-white shadow-[0_0_20px_-10px] shadow-slate-600 bottom-0 left-0 right-0 p-2">
       <div className="flex justify-around items-end">
         {menuNavigation.map((menu, index) => (
           <div
@@ -59,10 +59,3 @@ function BottomNavbar() {
 }
 
 export default BottomNavbar;
-
-/* <div className="absolute flex flex-col items-center -top-1/3 left-0 right-0 mr-auto ml-auto">
-        <div className="bg-pink-500 rounded-full p-2">
-          <HomeIcon className="icon text-white " />
-        </div>
-        <p className="capitalize">aktivasi</p>
-      </div> */

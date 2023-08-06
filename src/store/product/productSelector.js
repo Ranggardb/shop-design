@@ -18,10 +18,17 @@ const selectFilteredProducts = createSelector(
   selectProductReducer,
   (product) => product.filteredProducts
 );
+const selectCategoryProducts = createSelector(selectProducts, (products) => {
+  const categoryProducts = new Set();
+  products.map((product) => categoryProducts.add(product.category));
+
+  return Array.from(categoryProducts);
+});
 
 export {
   selectProducts,
   selectIsProductLoading,
   selectSearchField,
   selectFilteredProducts,
+  selectCategoryProducts,
 };

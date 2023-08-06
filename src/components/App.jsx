@@ -1,60 +1,64 @@
-import React, { Suspense, useEffect, useState } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getProducts } from '../services/Product/product';
-import { setProducts, setSearchField } from '../store/product/productReducer';
 import {
+  setFilteredProducts,
+  setProducts,
+  setSearchField,
+} from '../store/product/productReducer';
+import {
+  selectFilteredProducts,
   selectProducts,
   selectSearchField,
 } from '../store/product/productSelector';
 
-import TopNavbar from './Organisms/TopNavbar';
+import TopNavbar from './Organisms/TopNavbar/TopNavbar';
 import BottomNavbar from './Organisms/BottomNavbar';
 import AppSearchBar from './Molecules/AppSearchBar';
 import SkProductList from './Templates/Skeleton/SkProductList';
+import { searchItem } from '../utils/helper';
+import CategoryList from './Molecules/CategoryList';
 const ProductList = React.lazy(() => import('./Organisms/ProductList'));
 
 function App() {
   const dispatch = useDispatch();
-  const searchField = useSelector(selectSearchField);
-  const products = useSelector(selectProducts);
 
-  const [filteredProduct, setFilteredProduct] = useState(products);
+  const products = useSelector(selectProducts);
+  const searchField = useSelector(selectSearchField);
+  const filteredProduct = useSelector(selectFilteredProducts);
 
   useEffect(() => {
     const fetchProducts = async () => {
       const products = await getProducts();
       dispatch(setProducts(products));
     };
-
     fetchProducts();
   }, [dispatch]);
 
   useEffect(() => {
-    const searchProduct = products.filter((product) =>
-      product.name.toLowerCase().includes(searchField)
-    );
-
-    setFilteredProduct(searchProduct);
-  }, [products, searchField]);
+    const searchProduct = searchItem(products, searchField);
+    dispatch(setFilteredProducts(searchProduct));
+  }, [dispatch, products, searchField]);
 
   const onSearchChange = (event) => {
     dispatch(setSearchField(event.target.value.toLowerCase()));
   };
 
   return (
-    <>
+    <div className="container mx-auto px-2 relative">
       <TopNavbar />
       <AppSearchBar
         className=""
         placeholder="Facial Wash"
         onChangeHandler={onSearchChange}
       />
+      <CategoryList />
       <Suspense fallback={<SkProductList />}>
         <ProductList products={filteredProduct} />
       </Suspense>
       <BottomNavbar />
-    </>
+    </div>
   );
 }
 

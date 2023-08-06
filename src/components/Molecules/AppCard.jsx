@@ -6,7 +6,7 @@ function AppCard(props) {
 
   return (
     <figure className="group shadow-md grid content-between rounded-lg border pb-8 hover:ring-2 hover:ring-[#EBA529]">
-      <a key={id} href={image} className="h-36 lg:h-52 bg-slate-200">
+      <a key={id} href={image} className="h-36 lg:h-52 bg-slate-200 rounded-lg">
         <AppImage src={image} alt={alt} />
       </a>
       <div className="px-2 lg:px-6 ">

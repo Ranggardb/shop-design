@@ -4,6 +4,7 @@ const initialState = {
   products: [],
   isLoading: false,
   searchField: '',
+  filteredProducts: [],
 };
 
 export const productReducer = createSlice({
@@ -19,9 +20,16 @@ export const productReducer = createSlice({
     setSearchField: (state, action) => {
       state.searchField = action.payload;
     },
+    setFilteredProducts: (state, action) => {
+      state.filteredProducts = action.payload;
+    },
   },
 });
 
-export const { setProducts, setIsLoading, setSearchField } =
-  productReducer.actions;
+export const {
+  setProducts,
+  setIsLoading,
+  setSearchField,
+  setFilteredProducts,
+} = productReducer.actions;
 export default productReducer.reducer;

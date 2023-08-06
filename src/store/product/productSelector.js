@@ -6,5 +6,22 @@ const selectProducts = createSelector(
   selectProductReducer,
   (product) => product.products
 );
+const selectIsProductLoading = createSelector(
+  selectProductReducer,
+  (product) => product.isLoading
+);
+const selectSearchField = createSelector(
+  selectProductReducer,
+  (product) => product.searchField
+);
+const selectFilteredProducts = createSelector(
+  selectProductReducer,
+  (product) => product.filteredProducts
+);
 
-export { selectProducts };
+export {
+  selectProducts,
+  selectIsProductLoading,
+  selectSearchField,
+  selectFilteredProducts,
+};

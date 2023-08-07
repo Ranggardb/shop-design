@@ -40,7 +40,7 @@ Start the server
 
 ## API Reference
 
-```http
+```bash
 folder path: /services
 list request: /services/request.js
 ```

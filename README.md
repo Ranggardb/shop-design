@@ -2,15 +2,15 @@
 
 ## Tech Stack
 
-**Framework:** Vite, React
+**Framework:** [Vite](https://vitejs.dev/), [React](https://react.dev/)
 
-**State Management:** Redux Toolkit
+**State Management:** [Redux Toolkit](https://redux-toolkit.js.org/)
 
-**Style:** Tailwind CSS, HeadlessUI, Heroicon
+**Style:** [Tailwind CSS](https://tailwindcss.com/), [HeadlessUI](https://headlessui.com/), [Heroicon](https://heroicons.com/)
 
-**Http Client:** Axios
+**Http Client:** [Axios](https://axios-http.com/)
 
-**Routing:** React Router
+**Routing:** [React Router](https://reactrouter.com/)
 
 ## Run Locally
 
@@ -40,7 +40,7 @@ Start the server
 
 ## API Reference
 
-```bash
+```http
 folder path: /services
 list request: /services/request.js
 ```
@@ -50,3 +50,9 @@ list request: /services/request.js
 ```http
   GET /products
 ```
+
+## Demo
+
+Hosted on [Netlify](https://www.netlify.com/) :
+
+- [Shop Design](https://singular-pixie-ee29aa.netlify.app/)

@@ -7,7 +7,6 @@ import {
 } from '../../utils/helper';
 
 const addCartItem = (cartList, productToAdd) => {
-  console.log('cartAction.js => addCartItem', { cartList, productToAdd });
   const existingCartItem = isItemExist(cartList, productToAdd);
 
   if (existingCartItem) {

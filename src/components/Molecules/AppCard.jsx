@@ -1,4 +1,4 @@
-import { formatAngka, formatToRupiah } from '../../utils/helper';
+import { formatToRupiah } from '../../utils/helper';
 import AppImage from '../Atoms/AppImage';
 import AddIcon from '../../assets/AddIcon.svg';
 function AppCard(props) {
@@ -13,7 +13,7 @@ function AppCard(props) {
         <h3 className="mt-4 text-sm font-medium text-gray-700 ">{name}</h3>
         <div className="flex justify-between">
           <p className="mt-1 text-lg text-black font-bold">
-            {formatAngka(price, '')}
+            {formatToRupiah(price)}
           </p>
           <button>
             <img

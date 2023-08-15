@@ -19,6 +19,7 @@ import AppSearchBar from './Molecules/AppSearchBar';
 import SkProductList from './Templates/Skeleton/SkProductList';
 import { searchItem } from '../utils/helper';
 import CategoryList from './Molecules/CategoryList';
+import ShoppingCarts from './Organisms/Carts/ShoppingCarts';
 const ProductList = React.lazy(() => import('./Organisms/ProductList'));
 
 function App() {
@@ -48,10 +49,11 @@ function App() {
   return (
     <div className="container mx-auto px-2 relative">
       <TopNavbar />
+      <ShoppingCarts />
       <CategoryList />
       <AppSearchBar
         className=""
-        placeholder="Facial Wash"
+        placeholder="Search Product"
         onChangeHandler={onSearchChange}
       />
       <Suspense fallback={<SkProductList />}>

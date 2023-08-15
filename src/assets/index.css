@@ -14,7 +14,7 @@
     @apply rounded-full bg-pink-500  text-white h-12 w-12 p-3 absolute -top-2/4 left-0 right-0 mr-auto ml-auto group-hover:scale-110 transition;
   }
   .icon {
-    @apply text-slate-900 h-6 w-6 group-hover:scale-125 transition;
+    @apply h-6 w-6 group-hover:scale-125 transition;
   }
 }
 

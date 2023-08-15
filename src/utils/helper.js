@@ -27,4 +27,34 @@ const isItemExist = (arrayList, searchItem) => {
   return arrayList.find((arrayItem) => arrayItem.id === searchItem.id);
 };
 
-export { formatToRupiah, greetings, generateAvatar, searchItem, isItemExist };
+const additemToList = (arrayList, addItem) => {
+  return [...arrayList, { ...addItem, quantity: 1 }];
+};
+
+const increaseItemQuantityFromList = (arrayList, itemId) => {
+  return arrayList.map((item) =>
+    item.id === itemId.id ? { ...item, quantity: item.quantity + 1 } : item
+  );
+};
+
+const decreaseItemQuantityFromList = (arrayList, itemId) => {
+  return arrayList.map((item) =>
+    item.id === itemId.id ? { ...item, quantity: item.quantity - 1 } : item
+  );
+};
+
+const deleteItemFromList = (arrayList, deleteId) => {
+  return arrayList.filter((item) => item.id !== deleteId.id);
+};
+
+export {
+  formatToRupiah,
+  greetings,
+  generateAvatar,
+  searchItem,
+  isItemExist,
+  additemToList,
+  increaseItemQuantityFromList,
+  decreaseItemQuantityFromList,
+  deleteItemFromList,
+};

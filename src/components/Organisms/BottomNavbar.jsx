@@ -1,10 +1,10 @@
 import {
   HomeIcon,
-  DocumentArrowDownIcon,
+  ShoppingBagIcon,
   ArrowsUpDownIcon,
   UserIcon,
-  InboxStackIcon,
 } from '@heroicons/react/24/outline';
+import { useState } from 'react';
 
 const menuNavigation = [
   {
@@ -14,41 +14,53 @@ const menuNavigation = [
   },
   {
     name: 'order',
-    icon: <DocumentArrowDownIcon className="icon" />,
+    icon: <ShoppingBagIcon className="icon" />,
     url: '/order',
   },
   {
-    name: 'aktivasi',
-    icon: <InboxStackIcon className="icon-highligh" />,
-    url: '/aktivasi',
-  },
-  {
-    name: 'inventory',
+    name: 'withdraw',
     icon: <ArrowsUpDownIcon className="icon" />,
-    url: '/inventory',
+    url: '/withdraw',
   },
   {
-    name: 'akun',
+    name: 'account',
     icon: <UserIcon className="icon" />,
-    url: '/akun',
+    url: '/account',
   },
 ];
 
 function BottomNavbar() {
-  const handleClick = (url) => {
-    console.log(url);
+  const [activeMenuItem, setActiveMenuItem] = useState(menuNavigation[0].name);
+
+  const handleClick = (name) => {
+    setActiveMenuItem(name);
   };
+
   return (
     <section className="fixed container mx-auto bg-white shadow-[0_0_20px_-10px] shadow-slate-600 bottom-0 left-0 right-0 p-2">
       <div className="flex justify-around items-end">
         {menuNavigation.map((menu, index) => (
           <div
             key={index}
-            className="flex h-12 md:h-14 relative flex-col items-center justify-end group cursor-pointer"
-            onClick={() => handleClick(menu.url)}
+            className="flex h-12 md:h-14 relative flex-col items-center justify-end group group-hover:text-pink-500 cursor-pointer"
+            onClick={() => handleClick(menu.name)}
           >
-            {menu.icon}
-            <p className="capitalize text-sm font-medium self-end transition group-hover:text-pink-500">
+            <div
+              className={`group-hover:text-pink-500 ${
+                activeMenuItem === menu.name
+                  ? 'text-pink-500'
+                  : 'text-[#BDBDBD]'
+              }`}
+            >
+              {menu.icon}
+            </div>
+            <p
+              className={`capitalize text-[#BDBDBD] text-sm font-medium self-end transition group-hover:text-pink-500 ${
+                activeMenuItem === menu.name
+                  ? 'text-pink-500'
+                  : 'text-[#BDBDBD]'
+              }`}
+            >
               {menu.name}
             </p>
           </div>

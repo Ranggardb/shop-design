@@ -18,9 +18,9 @@ function CategoryList() {
   };
 
   return (
-    <div className="flex overflow-x-scroll p-2 space-x-2 styled-scrollbar mb-5">
+    <div className="flex overflow-x-scroll py-2 space-x-2 no-scrollbar mb-5">
       <button
-        className="py-1 px-3 rounded-full text-[12px] capitalize outline-none whitespace-nowrap bg-pink-400 text-white"
+        className="py-1 px-4 rounded-full text-[12px] capitalize outline-none whitespace-nowrap bg-[#FDEFF3] text-[#FA6F92]"
         onClick={() => handleSearchByCategory('')}
       >
         see all
@@ -28,7 +28,7 @@ function CategoryList() {
       {categoryProducts
         ? categoryProducts.map((category, index) => (
             <button
-              className="py-1 px-3 rounded-full capitalize outline-none text-sm bg-slate-100"
+              className="py-1 px-4 rounded-full capitalize outline-none text-sm bg-[#F1F1F1] text-[#828282]"
               key={index}
               onClick={() => handleSearchByCategory(category)}
             >

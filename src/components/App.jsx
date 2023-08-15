@@ -48,12 +48,12 @@ function App() {
   return (
     <div className="container mx-auto px-2 relative">
       <TopNavbar />
+      <CategoryList />
       <AppSearchBar
         className=""
         placeholder="Facial Wash"
         onChangeHandler={onSearchChange}
       />
-      <CategoryList />
       <Suspense fallback={<SkProductList />}>
         <ProductList products={filteredProduct} />
       </Suspense>
